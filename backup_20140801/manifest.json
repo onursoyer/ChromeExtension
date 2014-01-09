@@ -1,0 +1,39 @@
+{
+  "name" : "Page action by content",
+  "version" : "1.1",
+  "description" : "Shows a page action for HTML pages containing the word 'sandwich'",
+  "permissions": [
+  "tabs",
+  "bookmarks",
+  "http://*/*",
+  "unlimitedStorage",
+  "activeTab",
+  "contextMenus"
+  ],
+  "background" : {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "page_action" :
+  {
+    "default_icon" : "sandwich-19.png",
+    "default_title" : "There's a 'sandwich' in this page!"
+  },
+  "content_scripts" : [
+    {
+      "matches" : [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js" : ["jquery-2.0.2.min.js","jquery.highlight-4.closure.js", "jquery.powertip.min.js", "contentscript.js"],
+      "run_at" : "document_idle",
+      "css" : ["basic.css","jquery.powertip.css"],
+      "all_frames" : false
+    }
+  ],
+  "icons" : {
+    "48" : "sandwich-48.png",
+    "128" : "sandwich-128.png"
+  },
+  "manifest_version": 2
+}
